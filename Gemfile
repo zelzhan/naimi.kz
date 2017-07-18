@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-
+gem 'json', github: 'flori/json', branch: 'v1.8'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'
 # Use postgresql as the database for Active Record
@@ -43,7 +43,7 @@ group :development, :test do
   gem 'better_errors' # improves the error page
   gem 'binding_of_caller'  # used by better_errors
   gem 'awesome_print'  # awesome variable print
-  
+
   gem 'pry-rails'
   gem 'pry-byebug' #replaces pry-nav in MRI 2.0
   gem 'pry-rescue' # use rescue before a rails command, and if an exception is trigger you will be loaded into a pry session

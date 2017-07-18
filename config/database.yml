@@ -23,7 +23,12 @@ default: &default
 
 development:
   <<: *default
-  database: survey-demo_development
+  database: elzhan
+  adapter: postgresql
+  encoding: utf8
+  pool: 5
+  username: elzhan
+  password:
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
