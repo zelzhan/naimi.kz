@@ -46,7 +46,7 @@ a:focus {
     }
 
     * {
-      font-size: 14px;      
+      font-size: 14px;
       padding-bottom: 0;
     }
   }
@@ -71,7 +71,7 @@ a:focus {
 
 .label-survey {
   margin-right: 5px;
-  
+
   &-quiz {
     background-color: #5B618A;
   }
@@ -171,4 +171,8 @@ a:focus {
   line-height: 40px;
   font-size: 13px;
   background-color: #f8f8f8;
+}
+.logo a img{
+  height: 50px;
+  margin-right: 20px;
 }

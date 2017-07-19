@@ -9,11 +9,23 @@
           <span class="icon-bar"></span>
         </button>
         <%= link_to surveys_path, class: 'navbar-brand' do %>
-          <%= render 'shared/rr_logo' %>
+
+
+
         <% end -%>
       </div>
       <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
+          <li>
+            <div class="logo">
+              <p>
+                <a href="https://www.w3schools.com">
+
+                  <img border="0" alt="W3Schools" src="http://startupcompete.co/business/logo-image/businessid/47148/filename/logo-dfldcrdtegtt.png" width="100" height="100">
+                </a>
+              </p>
+            </div>
+          </li>
           <li class="<%= is_active?(surveys_path) %>">
             <%= link_to surveys_path do %>
               All surveys
