@@ -2,7 +2,7 @@ class AttemptsController < ApplicationController
 
   helper 'surveys'
 
-  before_filter :load_survey, only: [:new, :create]
+  before_filter :load_survey, only: [:new, :create, :show]
 
   def index
     @surveys = Survey::Survey.active
@@ -27,7 +27,7 @@ class AttemptsController < ApplicationController
     @attempt.participant = current_user
     if @attempt.valid? && @attempt.save
         correct_options_text = @survey.correct_options.present? ? 'Bellow are the correct answers marked in green' : ''
-      redirect_to attempt_path(@attempt.id), notice: "Thank you for answering #{@survey.name}! #{correct_options_text}"
+      redirect_to attempt_path(@attempt.id, survey_id: @survey.id), notice: "Thank you for answering #{@survey.name}! #{correct_options_text}"
     else
       build_flash(@attempt)
       @participant = current_user

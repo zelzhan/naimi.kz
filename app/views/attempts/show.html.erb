@@ -1,25 +1,52 @@
+
 <div class="container">
   <h2 class="survey-title">
     <%= @attempt.survey.name %>
     <p><small><%= @attempt.survey.description %></small></p>
   </h2>
   <ol class="questions">
-    <% @attempt.answers.each do |answer| %>
-      <li>
-        <p class="question"> <%= answer.question.text %> </p>
-        <ul class="options">
-          <% answer.question.options.each do |option| %>
-            <li class="radio">
-              <label>
-                <%= radio_button_tag '', '', the_chosen_one?(answer, option), disabled: true %>
-                <% color = get_color_of_option(answer, option) %>
-                <span class="<%= color %> <%= the_chosen_one?(answer, option) %>"> <%= option.text %> <%= get_weight(option) %> </span>
-              </label>
-              <p class="answers-number"> <%= number_of_people_who_also_answered(option.id) %> </p>
-            </li>
-          <% end %>
-        </ul>
-      </li>
-    <% end %>
+
+        <% if is_multanswer?(@survey.survey_type) %>
+
+        <% @attempt.answers.each do |answer| %>
+        
+          <li>
+            <p class="question"> <%= answer.question.text %> </p>
+            <ul class="options">
+              <% answer.question.options.each do |option| %>
+                <li class="checkbox">
+                  <label>
+
+                    <%= check_box_tag '', '', the_chosen_one?(answer, option), disabled: true %>
+                    <% color = get_color_of_option(answer, option) %>
+                    <span class="<%= color %> <%= the_chosen_one?(answer, option) %>"> <%= option.text %> <%= get_weight(option) %> </span>
+                  </label>
+                  <p class="answers-number"> <%= number_of_people_who_also_answered(option.id) %> </p>
+                </li>
+              <% end %>
+            </ul>
+          </li>
+        <% end %>
+
+        <% else %>
+        <% @attempt.answers.each do |answer| %>
+          <li>
+            <p class="question"> <%= answer.question.text %> </p>
+            <ul class="options">
+              <% answer.question.options.each do |option| %>
+                <li class="radio">
+                  <label>
+                    <%= radio_button_tag '', '', the_chosen_one?(answer, option), disabled: true %>
+                    <% color = get_color_of_option(answer, option) %>
+                    <span class="<%= color %> <%= the_chosen_one?(answer, option) %>"> <%= option.text %> <%= get_weight(option) %> </span>
+                  </label>
+                  <p class="answers-number"> <%= number_of_people_who_also_answered(option.id) %> </p>
+                </li>
+              <% end %>
+            </ul>
+          </li>
+        <% end %>
+        <% end %>
+
   <ol>
 </div>
