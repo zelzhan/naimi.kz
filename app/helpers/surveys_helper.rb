@@ -71,7 +71,8 @@ module SurveysHelper
     { 0 => 'quiz',
       1 => 'score',
       2 => 'poll',
-      3 => 'multanswer'
+      3 => 'multanswer',
+      4 => 'opquestion'
     }
   end
 
@@ -86,9 +87,14 @@ module SurveysHelper
   def is_poll? something
     something == 2 || something == 'poll'
   end
+
   def is_multanswer? something
     something == 3 || something == 'multanswer'
   end
+
+  def is_opquestion? something
+    something == 4 || something == 'opquestion'
+  end 
 
   def get_weight option
     return unless is_score?(option.question.survey.survey_type)

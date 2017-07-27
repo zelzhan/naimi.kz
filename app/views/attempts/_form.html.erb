@@ -22,7 +22,21 @@
           </li>
         <% end -%>
 
-        <%  else %>
+        <% elsif is_opquestion?(@survey.survey_type) %>
+        <%= f.fields_for :answers, get_answer_fields(@attempt) do |answer_fields| %>
+          <li>
+            <% question = answer_fields.object.question %>
+            <p class="question"><%= question.text %></p>
+            <ul class="options">
+              <%= collection_check_boxes('survey_attempt[answers_attributes]', question.id, question.options, :id, :text) do |b| %>
+                <li class="checkbox">
+                  <%= b.label { b.check_box + b.text } %>
+                </li>
+              <% end %>
+            </ul>
+          </li>
+          <% end %>
+        <% else -%>
         <%= f.fields_for :answers, get_answer_fields(@attempt) do |answer_fields| %>
           <li>
             <% question = answer_fields.object.question %>
@@ -35,7 +49,7 @@
               <% end %>
             </ul>
           </li>
-        <% end -%>
+        <% end %>
 
     <% end %>
   </ol>

@@ -12,6 +12,9 @@
       <%= render 'option_fields', :f => builder %>
     <% end -%>
   </ol>
-  <%= link_to_add_field 'Add option', f, :options %>
+    <% unless is_opquestion?(@survey.survey_type) %>
+        <%= link_to_add_field 'Add option', f, :options %>
+    <% end %>
   <%= link_to_remove_field 'Remove question', f %>
+
 </div>

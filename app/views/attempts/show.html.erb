@@ -9,7 +9,7 @@
         <% if is_multanswer?(@survey.survey_type) %>
 
         <% @attempt.answers.each do |answer| %>
-        
+
           <li>
             <p class="question"> <%= answer.question.text %> </p>
             <ul class="options">
@@ -28,6 +28,8 @@
           </li>
         <% end %>
 
+        <% elsif is_opquestion?(@survey.survey_type) %>
+        Этот раздел сайта находится в разработке
         <% else %>
         <% @attempt.answers.each do |answer| %>
           <li>
@@ -46,7 +48,7 @@
             </ul>
           </li>
         <% end %>
-        <% end %>
+      <% end %>
 
   <ol>
 </div>
