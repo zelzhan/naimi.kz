@@ -20,9 +20,7 @@ module ApplicationHelper
     current_page?(link_path) ? 'active' : nil
   end
 
-  def current_user
-    @user ||= User.find_by(id: session[:user_id])
-  end
+
 
   def user_form
     common_options = { validate: true, html: { class: 'user-form' } }
@@ -32,8 +30,20 @@ module ApplicationHelper
     end
   end
 
+  def resource_name
+    :user
+  end
+
+  def resource
+    @resource ||= User.new
+  end
+
+  def devise_mapping
+    @devise_mapping ||= Devise.mappings[:user]
+  end
+
   private
-  
+
   def number_of_people_who_also_answered_count option_id
     Survey::Answer.where(option_id: option_id).count
   end
