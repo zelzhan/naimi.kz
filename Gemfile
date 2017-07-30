@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'mercury-rails', :git => 'git://github.com/jejacks0n/mercury.git'
+
 gem 'json', github: 'flori/json', branch: 'v1.8'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'
@@ -60,3 +62,4 @@ end
 gem 'rails_12factor', group: :production
 
 ruby "2.2.0"
+gem 'paperclip'

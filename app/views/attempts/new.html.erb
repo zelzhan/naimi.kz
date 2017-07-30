@@ -1,5 +1,6 @@
 <%= paginate @questions %>
-<div class="container">
+
+<div id="primary" class="container" data-mercury="full">
   <% if @survey.nil? %>
     <p>
       This survey is no longer available
@@ -17,3 +18,7 @@
     </p>
   <% end -%>
 </div>
+
+<script type="text/javascript">
+jQuery(window).on('mercury:ready', function() { Mercury.saveUrl = '/attempts/new(.:format)'; });
+</script>
