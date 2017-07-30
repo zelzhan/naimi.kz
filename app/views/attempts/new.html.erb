@@ -1,10 +1,10 @@
-
+<%= paginate @questions %>
 <div class="container">
   <% if @survey.nil? %>
     <p>
       This survey is no longer available
     </p>
-  <% elsif @survey.avaliable_for_participant?(@participant) %>
+  <% elsif @survey.available_for_participant?(@participant) %>
     <%= render 'form' %>
   <% else %>
     <p>

@@ -14,6 +14,7 @@ class AttemptsController < ApplicationController
   end
 
   def new
+    @questions = @survey.questions.page params[:page]
     @participant = current_user
 
     unless @survey.nil?
@@ -53,7 +54,4 @@ class AttemptsController < ApplicationController
     end
   end
 
-  def current_user
-    view_context.current_user
-  end
 end
