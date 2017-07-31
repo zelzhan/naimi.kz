@@ -2,7 +2,7 @@ class AttemptsController < ApplicationController
 
   helper 'surveys'
 
-  before_filter :load_survey, only: [:new, :create, :show]
+  before_filter :load_survey, only: [:new, :create, :show, :mercury_update]
 
   def index
     @surveys = Survey::Survey.active
@@ -14,7 +14,6 @@ class AttemptsController < ApplicationController
   end
 
   def new
-    @questions = @survey.questions.page params[:page]
     @participant = current_user
 
     unless @survey.nil?
@@ -22,6 +21,9 @@ class AttemptsController < ApplicationController
       @attempt.answers.build
     end
   end
+
+  def updare
+  end 
 
   def create
     @attempt = @survey.attempts.new(params_whitelist)
@@ -35,6 +37,14 @@ class AttemptsController < ApplicationController
       render :new
     end
   end
+
+#  def mercury_update
+#      @attempt = Attempt.find(params[:id])
+#      # Update page
+#      render text: '{}'
+#  end
+
+
 
   def delete_user_attempts
     Survey::Attempt.where(participant_id: params[:user_id], survey_id: params[:survey_id]).destroy_all

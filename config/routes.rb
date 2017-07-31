@@ -3,16 +3,15 @@ Rails.application.routes.draw do
     namespace :mercury do
       resources :images
     end
-  mount Mercury::Engine => '/'
   devise_for :users
+  mount Mercury::Engine => '/'
   # The priority is based upon order of creation: first created -> highest priority.
+  resources 'attempts' 
   # See how all your routes lay out with "rake routes".
-
   # You can have the root of your site routed with "root"
   root 'surveys#index'
+
   resources 'surveys'
-  resources 'attempts'
-  resources 'users', only: [:create]
 
   delete 'attempts/:survey_id/:user_id' => 'attempts#delete_user_attempts', as: :delete_user_attempts
 

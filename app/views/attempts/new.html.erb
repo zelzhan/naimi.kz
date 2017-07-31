@@ -1,13 +1,24 @@
-<%= paginate @questions %>
 
-<div id="primary" class="container" data-mercury="full">
+
+<div class="container">
   <% if @survey.nil? %>
     <p>
       This survey is no longer available
-    </p>
+  #  </p>
   <% elsif @survey.available_for_participant?(@participant) %>
-    <%= render 'form' %>
-  <% else %>
+<div id="primary" data-mercury="full">
+
+
+
+   <%= render 'form' %>
+    <%= link_to "Edit Page", request.path  %></p>
+
+    <%= link_to 'hell', new_attempt_path(survey_id: @survey.id), class: 'survey-name' %>
+    </div>
+
+
+    <!--<p><%= link_to "Edit Page", "/editor" + new_attempt_path(survey_id: @survey.id), id: "edit_link", data: {save_url: new_attempt_path(survey_id: @survey.id)  } %></p>
+  --><% else %>
     <p>
       You have spent all the possible attempts to answer this Survey
     </p>
@@ -18,7 +29,3 @@
     </p>
   <% end -%>
 </div>
-
-<script type="text/javascript">
-jQuery(window).on('mercury:ready', function() { Mercury.saveUrl = '/attempts/new(.:format)'; });
-</script>

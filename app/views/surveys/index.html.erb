@@ -1,6 +1,8 @@
 <div class="container">
   <div class="questionnaires_<%= action_name %>">
+<div id="hello" data-mercury="full">
     <h1>
+      <%= link_to "Edit Page", "/editor" + request.path, id: "edit_link", data: {save_url: root_path(@survey) } %>
       Surveys
     </h1>
     <hr>
@@ -30,4 +32,5 @@
       <%= paginate @surveys %>
     <% end %>
   </div>
+</div>
 </div>

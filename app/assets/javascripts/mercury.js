@@ -449,4 +449,12 @@ window.Mercury = {
   // Turning debug mode on will log events and other various things (using console.debug if available).
   debug: false
 
+
 };
+
+
+jQuery(window).on('mercury:ready', function() {
+        var link = $('#mercury_iframe').contents().find('#edit_link');
+        Mercury.saveUrl = link.data('save-url');
+        link.hide();
+    });
